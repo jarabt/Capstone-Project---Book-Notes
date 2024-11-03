@@ -1,0 +1,17 @@
+{
+  "name": "capstone-project---book-notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jaroslav Tesař",
+  "license": "ISC",
+  "description": "This is my Capstone Project",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pg": "^8.13.1"
+  }
+}
