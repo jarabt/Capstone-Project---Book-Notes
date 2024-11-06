@@ -2,8 +2,13 @@ import express from "express";
 import axios from "axios";
 import fs from "node:fs";
 import pg from "pg";
+import bodyParser from "body-parser";
 
 const app = express();
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const port = 3000;
 const db = new pg.Client({
   user: "postgres",
@@ -14,8 +19,6 @@ const db = new pg.Client({
 });
 
 db.connect();
-
-app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   try {
@@ -43,6 +46,20 @@ app.get("/", async (req, res) => {
     console.error("Failed to make request: ", error.message);
   }
 });
+
+app.get("/create", (req, res) => {
+  //res.render("./edit.ejs", { blog: new Blog("", ""), indexOfBlog: -1 });
+  res.render("./submit.ejs");
+});
+
+app.post("/submit", (req, res) => {
+  console.log(req.body);
+});
+
+// app.post("/edit", (req, res) => {
+//   const index = req.body["indexOfBlog"];
+//   res.render("./edit.ejs", { blog: blogsArray[index], indexOfBlog: index });
+// });
 
 app.listen(port, () => {
   console.log(`Hi, I am Server. I am running on port ${port}.`);

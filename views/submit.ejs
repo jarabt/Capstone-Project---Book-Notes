@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/submit" method="POST">
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input type="text" name="isbn" id="isbn" />
+
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" />
+
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" />
+
+    <label for="date_read">Date of Reading</label>
+    <input type="text" name="date_read" id="date_read" />
+
+    <label for="rating">Rating</label>
+    <input type="text" name="rating" id="rating" />
+
+    <label for="about">About</label>
+    <input type="text" name="about" id="about" />
+
+    <label for="notes">Notes</label>
+    <input type="text" name="notes" id="notes" />
+  </div>
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+
+<%- include("partials/footer.ejs") %>
