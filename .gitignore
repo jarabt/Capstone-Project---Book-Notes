@@ -1,4 +1,7 @@
-#mac things:
+# book images direcory
+public/book_images/*
+
+# mac things:
 .DS_Store
 
 # Logs
