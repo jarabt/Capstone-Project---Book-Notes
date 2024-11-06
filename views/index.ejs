@@ -1,2 +1,6 @@
-<%- include("partials/header.ejs") %> Hello <%- include("partials/footer.ejs")
-%>
+<%- include("partials/header.ejs") %> <% books.forEach(item => { %>
+<p><%= item.isbn %></p>
+<!-- <img src="/book_images/0060855029.jpg" alt="Testing image" /> -->
+<img src="/book_images/<%= item.isbn %>.jpg" alt="Testing image" />
+
+<% }); %> <%- include("partials/footer.ejs") %>
