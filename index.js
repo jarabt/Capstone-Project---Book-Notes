@@ -54,8 +54,8 @@ app.get("/create", (req, res) => {
 
 app.post("/submit", async (req, res) => {
   try {
-    //const isbn = req.body["isbn"].trim();
-    const isbn = "0345816021";
+    const isbn = req.body["isbn"].trim();
+    //const isbn = "0345816021";
     const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
     const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
     const response = await axios.get(url, { responseType: "arraybuffer" });
