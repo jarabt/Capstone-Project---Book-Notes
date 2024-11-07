@@ -53,6 +53,8 @@ app.get("/create", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
+  // TODO ZDE ZAČÍTTTTTTTTTTTTTTTTTTTTTTTTT data validation from form
+  //req.body.title = req.body.title.trim();
   console.log(req.body);
 });
 
