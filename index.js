@@ -52,10 +52,23 @@ app.get("/create", (req, res) => {
   res.render("./submit.ejs");
 });
 
-app.post("/submit", (req, res) => {
-  // TODO ZDE ZAČÍTTTTTTTTTTTTTTTTTTTTTTTTT data validation from form
-  //req.body.title = req.body.title.trim();
-  console.log(req.body);
+app.post("/submit", async (req, res) => {
+  try {
+    //const isbn = req.body["isbn"].trim();
+    const isbn = "0345816021";
+    const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
+    const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
+    const response = await axios.get(url, { responseType: "arraybuffer" });
+    console.log(response.data);
+    fs.writeFile(jpgNamePath, response.data, (err) => {
+      if (err) throw err;
+      console.log("The file has been saved.");
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
+  //console.log(isbn.length);
 });
 
 // app.post("/edit", (req, res) => {
