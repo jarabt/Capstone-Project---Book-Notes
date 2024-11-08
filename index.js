@@ -55,6 +55,12 @@ app.get("/create", (req, res) => {
 app.post("/submit", async (req, res) => {
   try {
     const isbn = req.body["isbn"].trim();
+    const title = req.body["title"].trim();
+    const author = req.body["author"].trim();
+    const date = req.body["date_read"].trim();
+    const rating = req.body["rating"].trim();
+    const about = req.body["about"].trim();
+    const notes = req.body["notes"].trim();
     //const isbn = "0345816021";
     const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
     const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
@@ -64,6 +70,16 @@ app.post("/submit", async (req, res) => {
       if (err) throw err;
       console.log("The file has been saved.");
     });
+    await db.query("INSERT INTO books VALUES ($1, $2, $3, $4, $5, $6, $7);", [
+      isbn,
+      title,
+      author,
+      date,
+      rating,
+      about,
+      notes,
+    ]);
+    res.redirect("/");
   } catch (err) {
     console.log(err);
   }
