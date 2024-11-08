@@ -28,7 +28,7 @@ app.get("/", async (req, res) => {
     books.forEach((book) => {
       book.isbn = book.isbn.trim();
     });
-    console.log(books);
+    //console.log(books);
     res.render("index.ejs", {
       books: books,
     });
