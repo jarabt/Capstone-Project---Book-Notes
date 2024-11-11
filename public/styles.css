@@ -1,14 +1,25 @@
 h1 {
   font-family: "Yellowtail", cursive;
-  font-weight: 800;
-  font-style: normal;
   font-size: 70px;
+  color: #1c6758;
 }
 
 p {
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+}
+
+.btn,
+.descr {
+  font-family: "Noto Serif", serif;
+  text-decoration: none;
+  font-weight: bolder;
+  color: #1c6758;
+  font-size: larger;
+}
+
+.title-author {
+  font-family: "Noto Serif", serif;
+  color: #1c6758;
+  text-decoration: none;
 }
