@@ -1,7 +1,17 @@
+main {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  margin: 10px;
+}
+
 h1 {
   font-family: "Yellowtail", cursive;
-  font-size: 70px;
+  font-size: 7rem;
   color: #1c6758;
+  font-weight: 100;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 p {
@@ -22,4 +32,10 @@ p {
   font-family: "Noto Serif", serif;
   color: #1c6758;
   text-decoration: none;
+}
+
+.book {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
