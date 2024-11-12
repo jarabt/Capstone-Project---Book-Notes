@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+<div class="book">
+  <img src="/book_images/<%= item.isbn.trim() %>.jpg" alt="Book cover" />
+  <div>
+    <h2 class="title-author"><%= item.title %></h2>
+    <h2 class="title-author"><%= item.author %></h2>
+    <div class="book-properties">
+      <p><span class="descr">ISBN: </span><%= item.isbn.trim() %></p>
+      <p>
+        <span class="descr">Date read: </span><%= item.date_read.getFullYear()
+        %>-<%= item.date_read.getMonth() + 1%>-<%= item.date_read.getDate() %>
+      </p>
+      <p><span class="descr">My rating: </span><%= item.rating %></p>
+    </div>
+  </div>
+</div>
+
+<p><%= item.about %></p>
+
+<!-- TODO dodat krátkou horizontální zelenou čárku podle designu -->
+
+<p><%= item.notes %></p>
+
+<%- include("partials/footer.ejs") %>

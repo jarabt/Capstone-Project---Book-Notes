@@ -37,6 +37,19 @@ app.get("/create", (req, res) => {
   res.render("./submit.ejs");
 });
 
+app.post("/detail", async (req, res) => {
+  try {
+    //console.log(req.body.isbnOfBook);
+    const result = await db.query("SELECT * FROM books WHERE isbn = $1", [
+      req.body.isbnOfBook,
+    ]);
+    //console.log(result.rows[0]);
+    res.render("./detail.ejs", { item: result.rows[0] });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post("/submit", async (req, res) => {
   try {
     const isbn = req.body["isbn"].trim();
