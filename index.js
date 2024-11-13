@@ -62,7 +62,7 @@ app.post("/submit", async (req, res) => {
 
     console.log(req.body);
 
-    /* //const isbn = "0345816021";
+    //const isbn = "0345816021";
     const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
     const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
     const response = await axios.get(url, { responseType: "arraybuffer" });
@@ -80,7 +80,7 @@ app.post("/submit", async (req, res) => {
       about,
       notes,
     ]);
-    res.redirect("/"); */
+    res.redirect("/");
   } catch (err) {
     console.log(err);
   }
