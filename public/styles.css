@@ -19,7 +19,8 @@ h2 {
   margin-bottom: 5px;
 }
 
-p {
+p,
+input {
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
   margin: 0px;
@@ -35,6 +36,11 @@ hr {
   margin: 0px;
 }
 
+input {
+  margin-bottom: 20px;
+}
+
+label,
 .btn,
 .descr {
   font-family: "Noto Serif", serif;
@@ -74,4 +80,20 @@ hr {
 
 .book-properties p {
   margin: auto;
+}
+
+.book-create {
+  display: flex;
+  flex-direction: column;
+}
+
+#isbn,
+#date_read,
+#rating {
+  width: 13rem;
+}
+
+#title,
+#author {
+  width: 20rem;
 }
