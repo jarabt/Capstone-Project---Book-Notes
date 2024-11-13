@@ -1,11 +1,6 @@
 <%- include("partials/header.ejs") %>
 
-<form
-  id="create-form"
-  action="/submit"
-  method="POST"
-  onsubmit="return validateForm()"
->
+<form id="create-form" action="/submit" method="POST">
   <div class="book-create">
     <label for="isbn">ISBN</label>
     <input type="text" name="isbn" id="isbn" maxlength="13" size="13" />

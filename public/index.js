@@ -1,7 +1,5 @@
 const createForm = document.getElementById("create-form");
-createForm.addEventListener("submit", () => {
-  validateCreateForm();
-});
+createForm.onsubmit = validateCreateForm;
 
 function validateCreateForm() {
   const isbn = createForm["isbn"].value;
