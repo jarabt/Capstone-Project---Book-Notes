@@ -10,8 +10,13 @@ function validateCreateForm() {
   //const about = createForm["about"].value;
   //const notes = createForm["notes"].value;
 
-  if (isNaN(isbn)) {
+  if (isNaN(isbn.trim())) {
     alert("ISBN must be a number.");
+    return false;
+  }
+
+  if (isbn.trim().length > 13) {
+    alert("ISBN may have maximal 13 digits");
     return false;
   }
 
