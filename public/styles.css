@@ -22,6 +22,17 @@ h2 {
 p {
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
+  margin: 0px;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  /* Set the hr color */
+  color: #1c6758; /* old IE */
+  background-color: #1c6758; /* Modern Browsers */
+  width: 60px;
+  margin: 0px;
 }
 
 .btn,
@@ -53,6 +64,7 @@ p {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  margin-bottom: 50px;
 }
 
 .book-properties {
