@@ -1,6 +1,11 @@
 <%- include("partials/header.ejs") %>
 
-<form action="/submit" method="POST" onsubmit="return validateForm()">
+<form
+  id="create-form"
+  action="/submit"
+  method="POST"
+  onsubmit="return validateForm()"
+>
   <div class="book-create">
     <label for="isbn">ISBN</label>
     <input type="text" name="isbn" id="isbn" maxlength="13" size="13" />
@@ -23,7 +28,9 @@
     <label for="notes">Notes</label>
     <textarea rows="10" type="text" name="notes" id="notes"></textarea>
   </div>
-  <button type="submit" class="btn btn-dark">Submit</button>
+  <button class="author-button" type="submit">
+    <h2 class="btn">Submit</h2>
+  </button>
 </form>
 
 <%- include("partials/footer.ejs") %>

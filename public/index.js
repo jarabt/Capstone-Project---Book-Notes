@@ -1,11 +1,16 @@
-function validateForm() {
-  let isbn = document.forms[0]["isbn"].value;
-  let title = document.forms[0]["title"].value;
-  let author = document.forms[0]["author"].value;
-  let date = document.forms[0]["date_read"].value;
-  let rating = document.forms[0]["rating"].value;
-  //let about = document.forms[0]["about"].value;
-  //let notes = document.forms[0]["notes"].value;
+const createForm = document.getElementById("create-form");
+createForm.addEventListener("submit", () => {
+  validateCreateForm();
+});
+
+function validateCreateForm() {
+  const isbn = createForm["isbn"].value;
+  const title = createForm["title"].value;
+  const author = createForm["author"].value;
+  const date = createForm["date_read"].value;
+  const rating = createForm["rating"].value;
+  //const about = createForm["about"].value;
+  //const notes = createForm["notes"].value;
 
   if (isNaN(isbn)) {
     alert("ISBN must be a number.");
