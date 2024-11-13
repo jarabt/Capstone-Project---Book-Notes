@@ -34,7 +34,7 @@ app.get("/", async (req, res) => {
 
 app.get("/create", (req, res) => {
   //res.render("./edit.ejs", { blog: new Blog("", ""), indexOfBlog: -1 });
-  res.render("./submit.ejs");
+  res.render("./create.ejs");
 });
 
 app.post("/detail", async (req, res) => {
