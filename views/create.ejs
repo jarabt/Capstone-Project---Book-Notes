@@ -31,8 +31,16 @@
     : '' %>"
     />
 
+    <!-- <label for="date_read">Date of Reading</label>
+    <input type="date" name="date_read" id="date_read" value="<%= locals.item ?
+    (item.date_read.getFullYear() + "-" + (item.date_read.getMonth() + 1) + "-"
+    + item.date_read.getDate()) : '' %>" /> -->
+
     <label for="date_read">Date of Reading</label>
-    <input type="date" name="date_read" id="date_read" />
+    <input type="date" name="date_read" id="date_read" value="<%= locals.item ?
+    (item.date_read.toLocaleString("default", { year: "numeric" }) + "-" +
+    item.date_read.toLocaleString("default", { month: "2-digit" }) + "-" +
+    item.date_read.toLocaleString("default", { day: "2-digit" })) : '' %>" />
 
     <label for="rating">Rating</label>
     <input type="number" name="rating" id="rating" max="10" min="1" />
