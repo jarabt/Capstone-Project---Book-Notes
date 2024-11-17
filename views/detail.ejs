@@ -13,7 +13,15 @@
       </p>
       <p><span class="descr">My rating: </span><%= item.rating %></p>
     </div>
-    <a class="btn">Edit</a>
+
+    <form action="/edit" method="POST">
+      <input type="hidden" name="isbnOfBook" value="<%= item.isbn %>" />
+      <button class="author-button" type="submit">
+        <a class="btn">Edit</a>
+      </button>
+    </form>
+
+    <!-- <a class="btn">Edit</a> -->
   </div>
 </div>
 

@@ -84,14 +84,23 @@ app.post("/submit", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
-  //console.log(isbn.length);
 });
 
-// app.post("/edit", (req, res) => {
-//   const index = req.body["indexOfBlog"];
-//   res.render("./edit.ejs", { blog: blogsArray[index], indexOfBlog: index });
-// });
+app.post("/edit", async (req, res) => {
+  try {
+    //console.log(req.body.isbnOfBook);
+    const result = await db.query("SELECT * FROM books WHERE isbn = $1", [
+      req.body.isbnOfBook,
+    ]);
+    //console.log(result.rows[0]);
+    res.render("./create.ejs", { item: result.rows[0] });
+  } catch (err) {
+    console.log(err);
+  }
+
+  // const item = req.body["item"];
+  // res.render("./edit.ejs", { blog: blogsArray[index], indexOfBlog: index });
+});
 
 app.listen(port, () => {
   console.log(`Hi, I am Server. I am running on port ${port}.`);
