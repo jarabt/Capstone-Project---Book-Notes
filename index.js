@@ -61,25 +61,30 @@ app.post("/submit", async (req, res) => {
 
     console.log(req.body);
 
-    //const isbn = "0345816021";
-    const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
-    const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
-    const response = await axios.get(url, { responseType: "arraybuffer" });
-    console.log(response.data);
-    fs.writeFile(jpgNamePath, response.data, (err) => {
-      if (err) throw err;
-      console.log("The file has been saved.");
-    });
-    await db.query("INSERT INTO books VALUES ($1, $2, $3, $4, $5, $6, $7);", [
-      isbn,
-      title,
-      author,
-      date,
-      rating,
-      about,
-      notes,
-    ]);
-    res.redirect("/");
+    //if new record
+    if (!req.body.isEdit) {
+      //const isbn = "0345816021";
+      const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
+      const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
+      const response = await axios.get(url, { responseType: "arraybuffer" });
+      console.log(response.data);
+      fs.writeFile(jpgNamePath, response.data, (err) => {
+        if (err) throw err;
+        console.log("The file has been saved.");
+      });
+      await db.query("INSERT INTO books VALUES ($1, $2, $3, $4, $5, $6, $7);", [
+        isbn,
+        title,
+        author,
+        date,
+        rating,
+        about,
+        notes,
+      ]);
+      res.redirect("/");
+    } else {
+      //just editing the record
+    }
   } catch (err) {
     console.log(err);
   }

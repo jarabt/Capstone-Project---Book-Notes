@@ -2,14 +2,10 @@
 
 <form id="create-form" action="/submit" method="POST">
   <div class="book-create">
+    <!--isbn input disabled if editing mode-->
     <label for="isbn">ISBN</label>
-    <input
-      type="text"
-      name="isbn"
-      id="isbn"
-      value="<%= locals.item ? item.isbn
-    : '' %>"
-    />
+    <input type="text" name="isbn" id="isbn" value="<%= locals.item ? item.isbn
+    : '' %>" <%= locals.item ? "disabled" : '' %> />
 
     <label for="title">Title</label>
     <input
@@ -31,11 +27,6 @@
     : '' %>"
     />
 
-    <!-- <label for="date_read">Date of Reading</label>
-    <input type="date" name="date_read" id="date_read" value="<%= locals.item ?
-    (item.date_read.getFullYear() + "-" + (item.date_read.getMonth() + 1) + "-"
-    + item.date_read.getDate()) : '' %>" /> -->
-
     <label for="date_read">Date of Reading</label>
     <input type="date" name="date_read" id="date_read" value="<%= locals.item ?
     (item.date_read.toLocaleString("default", { year: "numeric" }) + "-" +
@@ -43,14 +34,30 @@
     item.date_read.toLocaleString("default", { day: "2-digit" })) : '' %>" />
 
     <label for="rating">Rating</label>
-    <input type="number" name="rating" id="rating" max="10" min="1" />
+    <input
+      type="number"
+      name="rating"
+      id="rating"
+      max="10"
+      min="1"
+      value="<%= locals.item ? item.rating
+    : '' %>"
+    />
 
     <label for="about">About</label>
-    <textarea rows="5" name="about" id="about"></textarea>
+    <textarea rows="5" name="about" id="about">
+<%= locals.item ? item.about
+    : '' %></textarea
+    >
 
     <label for="notes">Notes</label>
-    <textarea rows="10" type="text" name="notes" id="notes"></textarea>
+    <textarea rows="10" type="text" name="notes" id="notes">
+<%= locals.item ? item.notes
+    : '' %></textarea
+    >
   </div>
+  <!--hidden input to differentiate between creating new record and editing record-->
+  <input type="hidden" value="<%= locals.item %>" name="isEdit" />
   <button class="author-button" type="submit">
     <h2 class="btn">Submit</h2>
   </button>

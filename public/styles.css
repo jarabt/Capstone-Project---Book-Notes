@@ -20,7 +20,8 @@ h2 {
 }
 
 p,
-input {
+input,
+textarea {
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
   margin: 0px;
