@@ -89,6 +89,10 @@ label,
   flex-direction: column;
 }
 
+.not-editable {
+  background-color: #eef2e6;
+}
+
 #isbn,
 #date_read,
 #rating {

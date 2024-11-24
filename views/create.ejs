@@ -5,7 +5,8 @@
     <!--isbn input disabled if editing mode-->
     <label for="isbn">ISBN</label>
     <input type="text" name="isbn" id="isbn" value="<%= locals.item ? item.isbn
-    : '' %>" <%= locals.item ? "disabled" : '' %> />
+    : '' %>" <%= locals.item ? "readonly" : '' %> class="<%= locals.item ?
+    "not-editable" : '' %>" />
 
     <label for="title">Title</label>
     <input
