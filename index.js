@@ -83,7 +83,13 @@ app.post("/submit", async (req, res) => {
       ]);
       res.redirect("/");
     } else {
-      //just editing the record
+      //just editing the existing record
+      console.log(isbn.length);
+      await db.query(
+        "UPDATE books SET title=$1, author=$2, date_read=$3, rating=$4, about=$5, notes=$6 WHERE isbn=$7;",
+        [title, author, date, rating, about, notes, isbn]
+      );
+      res.redirect("/");
     }
   } catch (err) {
     console.log(err);
