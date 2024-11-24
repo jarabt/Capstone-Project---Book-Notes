@@ -45,6 +45,34 @@ app.get("/by-title", async (req, res) => {
   }
 });
 
+//order by date
+app.get("/by-date", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM books ORDER BY date_read DESC;"
+    );
+    let books = result.rows;
+    res.render("index.ejs", {
+      books: books,
+    });
+  } catch (error) {
+    console.error("Failed to make request: ", error.message);
+  }
+});
+
+//order by rating
+app.get("/by-rating", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM books ORDER BY rating DESC;");
+    let books = result.rows;
+    res.render("index.ejs", {
+      books: books,
+    });
+  } catch (error) {
+    console.error("Failed to make request: ", error.message);
+  }
+});
+
 app.get("/create", (req, res) => {
   res.render("./create.ejs");
 });
