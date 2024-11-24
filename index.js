@@ -32,6 +32,19 @@ app.get("/", async (req, res) => {
   }
 });
 
+//order by title
+app.get("/by-title", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM books ORDER BY title ASC;");
+    let books = result.rows;
+    res.render("index.ejs", {
+      books: books,
+    });
+  } catch (error) {
+    console.error("Failed to make request: ", error.message);
+  }
+});
+
 app.get("/create", (req, res) => {
   res.render("./create.ejs");
 });
