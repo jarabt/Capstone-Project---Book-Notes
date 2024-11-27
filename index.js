@@ -153,6 +153,10 @@ app.post("/edit", async (req, res) => {
   // res.render("./edit.ejs", { blog: blogsArray[index], indexOfBlog: index });
 });
 
+app.post("/delete", async (req, res) => {
+  console.log("In delete route");
+});
+
 app.listen(port, () => {
   console.log(`Hi, I am Server. I am running on port ${port}.`);
 });
