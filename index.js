@@ -104,7 +104,7 @@ app.post("/submit", async (req, res) => {
 
     //if new record
     if (!req.body.isEdit) {
-      //const isbn = "0345816021";
+      //trial const isbn = "0345816021";
       const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
       const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
       const response = await axios.get(url, { responseType: "arraybuffer" });
@@ -125,7 +125,7 @@ app.post("/submit", async (req, res) => {
       res.redirect("/");
     } else {
       //just editing the existing record
-      console.log(isbn.length);
+      //console.log(isbn.length);
       await db.query(
         "UPDATE books SET title=$1, author=$2, date_read=$3, rating=$4, about=$5, notes=$6 WHERE isbn=$7;",
         [title, author, date, rating, about, notes, isbn]
@@ -148,13 +148,16 @@ app.post("/edit", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
-  // const item = req.body["item"];
-  // res.render("./edit.ejs", { blog: blogsArray[index], indexOfBlog: index });
 });
 
 app.post("/delete", async (req, res) => {
-  console.log("In delete route");
+  try {
+    //console.log(req.body.isbnOfBook);
+    await db.query("DELETE FROM books WHERE isbn = $1", [req.body.isbnOfBook]);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(port, () => {
