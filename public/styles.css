@@ -112,4 +112,10 @@ label,
   font-family: "Yellowtail", cursive;
   text-decoration: none;
   color: #1c6758;
+  font-size: 2rem;
+}
+
+#edit-delete {
+  display: flex;
+  justify-content: space-between;
 }

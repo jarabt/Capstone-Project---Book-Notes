@@ -14,17 +14,18 @@
         item.date_read.toLocaleString("default", { day: "2-digit" }) %>
       </p>
       <p><span class="descr">My rating: </span><%= item.rating %></p>
-    </div>
-
-    <form action="/edit" method="POST">
-      <input type="hidden" name="isbnOfBook" value="<%= item.isbn %>" />
-      <button class="author-button" type="submit">
-        <a class="btn">Edit</a>
-      </button>
-      <button class="author-button" formaction="/delete">
-        <a class="btn">Delete</a>
-      </button>
-    </form>
+    </div>   
+      <form action="/edit" method="POST">
+        <input type="hidden" name="isbnOfBook" value="<%= item.isbn %>" />
+        <div id="edit-delete">
+        <button class="author-button" type="submit">
+          <a class="btn">Edit</a>
+        </button>
+        <button class="author-button" formaction="/delete">
+          <a class="btn">Delete</a>
+        </div>
+        </button>
+      </form>    
   </div>
 </div>
 
