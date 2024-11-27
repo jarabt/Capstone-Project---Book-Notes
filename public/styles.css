@@ -107,3 +107,9 @@ label,
 #author {
   width: 20rem;
 }
+
+#logo {
+  font-family: "Yellowtail", cursive;
+  text-decoration: none;
+  color: #1c6758;
+}
