@@ -8,10 +8,14 @@ main {
 h1 {
   font-family: "Yellowtail", cursive;
   font-size: 7rem;
-  color: #1c6758;
   font-weight: 100;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+h1 > a {
+  text-decoration: none;
+  color: #1c6758;
 }
 
 h2 {
