@@ -3,19 +3,22 @@ import axios from "axios";
 import fs from "node:fs";
 import pg from "pg";
 import bodyParser from "body-parser";
+import env from "dotenv";
 
 const app = express();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const port = 3000;
+env.config();
+
+const port = process.env.APP_PORT;
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "books",
-  password: "apollo123",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT5432,
 });
 
 db.connect();
