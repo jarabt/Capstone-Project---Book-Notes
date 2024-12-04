@@ -2,13 +2,14 @@
 <a href="/" id="logo">My books</a>
 <form id="create-form" action="/submit" method="POST">
   <div class="book-create">
-    <!--isbn input disabled if editing mode-->
     <label for="isbn">ISBN</label>
+    <!--isbn input disabled in case of edit-mode-->
     <input type="text" name="isbn" id="isbn" value="<%= locals.item ? item.isbn
     : '' %>" <%= locals.item ? "readonly" : '' %> class="<%= locals.item ?
     "not-editable" : '' %>" />
 
     <label for="title">Title</label>
+    <!--value exists in case of edit-mode-->
     <input
       type="text"
       name="title"
@@ -19,6 +20,7 @@
     />
 
     <label for="author">Author</label>
+    <!--value exists in case of edit-mode-->
     <input
       type="text"
       name="author"
@@ -29,12 +31,14 @@
     />
 
     <label for="date_read">Date of Reading</label>
+    <!--value exists in case of edit-mode-->
     <input type="date" name="date_read" id="date_read" value="<%= locals.item ?
     (item.date_read.toLocaleString("default", { year: "numeric" }) + "-" +
     item.date_read.toLocaleString("default", { month: "2-digit" }) + "-" +
     item.date_read.toLocaleString("default", { day: "2-digit" })) : '' %>" />
 
     <label for="rating">Rating</label>
+    <!--value exists in case of edit-mode-->
     <input
       type="number"
       name="rating"
@@ -46,12 +50,14 @@
     />
 
     <label for="about">About</label>
+    <!--text exists in case of edit-mode-->
     <textarea rows="5" name="about" id="about">
 <%= locals.item ? item.about
     : '' %></textarea
     >
 
     <label for="notes">Notes</label>
+    <!--text exists in case of edit-mode-->
     <textarea rows="10" type="text" name="notes" id="notes">
 <%= locals.item ? item.notes
     : '' %></textarea

@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 env.config();
 
+//using Environment Variables
 const port = process.env.APP_PORT;
 const db = new pg.Client({
   user: process.env.PG_USER,
@@ -23,6 +24,7 @@ const db = new pg.Client({
 
 db.connect();
 
+//home route
 app.get("/", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM books;");
@@ -35,7 +37,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-//order by title
+//order by title route
 app.get("/by-title", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM books ORDER BY title ASC;");
@@ -48,7 +50,7 @@ app.get("/by-title", async (req, res) => {
   }
 });
 
-//order by date
+//order by date route
 app.get("/by-date", async (req, res) => {
   try {
     const result = await db.query(
@@ -63,7 +65,7 @@ app.get("/by-date", async (req, res) => {
   }
 });
 
-//order by rating
+//order by rating route
 app.get("/by-rating", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM books ORDER BY rating DESC;");
@@ -102,11 +104,10 @@ app.post("/submit", async (req, res) => {
     const rating = req.body["rating"].trim();
     const about = req.body["about"].trim();
     const notes = req.body["notes"].trim();
+    //console.log(req.body);
 
-    console.log(req.body);
-
-    //if new record
     if (!req.body.isEdit) {
+      //if user creates a new record
       //trial const isbn = "0345816021";
       const url = "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg";
       const jpgNamePath = "./public/book_images/" + isbn + ".jpg";
@@ -127,7 +128,7 @@ app.post("/submit", async (req, res) => {
       ]);
       res.redirect("/");
     } else {
-      //just editing the existing record
+      //user is just editing existing record
       //console.log(isbn.length);
       await db.query(
         "UPDATE books SET title=$1, author=$2, date_read=$3, rating=$4, about=$5, notes=$6 WHERE isbn=$7;",
@@ -140,6 +141,7 @@ app.post("/submit", async (req, res) => {
   }
 });
 
+//user submitted edit-changes
 app.post("/edit", async (req, res) => {
   try {
     //console.log(req.body.isbnOfBook);
@@ -153,6 +155,7 @@ app.post("/edit", async (req, res) => {
   }
 });
 
+//user clicked on delete button
 app.post("/delete", async (req, res) => {
   try {
     //console.log(req.body.isbnOfBook);

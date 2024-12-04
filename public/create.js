@@ -1,3 +1,4 @@
+//logic of input data validation for form in create.ejs template
 const createForm = document.getElementById("create-form");
 createForm.onsubmit = validateCreateForm;
 
